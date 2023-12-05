@@ -1,8 +1,9 @@
-# chefe em casa
+# Chef em Casa
 
-Projeto desenvolvido no curso do Senac 2023.1
+Projeto desenvolvido no curso do Senac
 
-# Tecnologia
+# Tecnologias
+
 - Bootstrap
 - PHP
 - MySQL
