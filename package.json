@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arvlotus/chef-em-casa.git"
+    "url": "git+https://github.com/aeusteixeira/chef-em-casa.git"
   },
-  "author": "Gabriel",
-  "license": "ISC",
+  "author": "Matheus Teixeira",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arvlotus/chef-em-casa/issues"
+    "url": "https://github.com/aeusteixeira/chef-em-casa/issues"
   },
-  "homepage": "https://github.com/arvlotus/chef-em-casa#readme",
+  "homepage": "https://github.com/aeusteixeira/chef-em-casa#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
