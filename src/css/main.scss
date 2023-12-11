@@ -1,30 +1,85 @@
 // Define as variaveis das cores
+$color1: #121f30;
+$color2: #fef4ec;
 
-$color1: #f4478f;
-$color2: rgb(24, 95, 51);
-$color3: #f8df00;
-
-// Inserir as cores no Bootstrap
+// Inserir as cores do Bootstrap
 $theme-colors: (
-    'color1': $color1,
-    'color2': $color2,
-    'color3': $color3
+  "color1": $color1,
+  "color2": $color2,
 );
 
-// Torna a fonte responsiva. Por padrão, ela já vem ativada
-
+// Torna a fonte responsiva. Por padrão, vem ativada
 $enable-responve-font-size: true !default;
 
 // Ativa a sombra em todos os elementos
-
-$enable-shadow: false !default;
+$enable-shadows: false !default;
 
 // Para desativar os cantos arredondados dos elementos
-
 $enable-rounded: true !default;
 
 // Adiciona as cores com um degradê
-
 $enable-gradients: false !default;
+
+.features {
+  background-image: url("../img/12-min.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.card {
+  border-radius: 12px !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+#features .card:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card .card-img-top {
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.card .card-icon {
+  font-size: 42px;
+  color: #ff5500;
+}
+
+body,
+nav {
+  background-color: $color2 !important;
+  color: $color1 !important;
+}
+
+#cta {
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+
+#cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ); /* Adicione este gradiente escuro como overlay */
+  z-index: -1;
+}
+
+#cta {
+  background-image: url("../img/12-min.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
