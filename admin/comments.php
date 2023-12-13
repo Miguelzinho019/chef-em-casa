@@ -72,6 +72,7 @@ include_once('../components/admin/header.php');
                     </table>
                 </div>
             </div>
+            echo "ok"
         </section>
     </div>
 </main>
