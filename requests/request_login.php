@@ -1,6 +1,8 @@
 <?php
-include_once('..')
+// Iniciar a sessão
+session_start();
 
+include_once ('../helpers/database.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -14,25 +16,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($connection, $email);
     $password= mysqli_real_escape_string($connection, $password);
 
-
-    $password_hashed = password_hash($password, PASSWORD_DEFAULT);
-
     $query = "SELECT * FROM users WHERE email = '$email'";
 
     $result = mysqli_query($connection, $query);
 
     if(mysqli_num_rows($result) > 0){
-     $row = mysqli_fetch_assoc($result);
+        // Transforma o resultado em um array associativo
+        $row = mysqli_fetch_assoc($result);
 
-     if(password_verify(password, $row['password'])){
-          $_SESSION['user_id'] = $frow['id'];
-          $_SESSION['user_name'] = $frow['name'];
+        // Verifica se a senha digitada é a mesma do banco, que está criptografada
+        if(password_verify($password, $row['password'])){
 
-          header("location: ../admin/index.php");
-     }else{
-          $_SESSION['login_error'] = 'Senha'
-     }
+            // Armazenar o ID do usuário e o nome
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_level'] = $row['level'];
+
+            // Redirecionar para o dashboard
+            header("Location: ../admin/index.php");
+        }else{
+            // Falar esta incorreta
+            $_SESSION['login_error'] = 'Senha está incorreta';
+            header("Location: ../login.php");
+        }
+
+    }else{
+        $_SESSION['login_error'] = 'E-mail incorreto ou não existe';
+        header("Location: ../login.php");
     }
-}
 
-?>
+    mysqli_close($connection);
+}

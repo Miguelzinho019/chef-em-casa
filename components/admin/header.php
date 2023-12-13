@@ -1,10 +1,12 @@
 <?php
-
 session_start();
 
-if(!isset ($_SESSION['user_id'])){
-    header('Location: ../login.php') ;
-   }
+if(!isset($_SESSION['user_id'])){
+    header('Location: ../login.php');
+}
+
+include_once('../helpers/database.php');
+$connection = connectDatabase();
 
 ?>
 
@@ -32,7 +34,7 @@ if(!isset ($_SESSION['user_id'])){
     <!-- Navbar do dashboard -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 Chef em Casa | Painel de Controle
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
@@ -45,11 +47,8 @@ if(!isset ($_SESSION['user_id'])){
                             <i class="fa fa-user"></i> <?= $_SESSION['user_name'] ?? 'Usuário' ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="profile.php">
                                 <i class="fa fa-user"></i> Perfil
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fa fa-cog"></i> Configurações
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i> Sair</a>
