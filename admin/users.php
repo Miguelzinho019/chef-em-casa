@@ -7,7 +7,14 @@ $pageInfo = array(
 
 include_once('../components/admin/header.php');
 
-include_once('../components/admin/header.php');
+$query = "SELECT id, name, email image, about FROM users";
+$result = mysqli_query($connection, $query);
+$users = array();
+
+if(mysqli_num_rows($result) > 0){
+    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 ?>
 
 <!-- Conteúdo do dashboard -->
@@ -39,6 +46,7 @@ include_once('../components/admin/header.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php  foreach($users as $user) ?>
                             <tr>
                                 <td>João Silva</td>
                                 <td>joao@gmail.com</td>

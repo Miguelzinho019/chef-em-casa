@@ -71,6 +71,31 @@ if ($_FILES["image"]["size"] > 0) {
     }
 }
 
+// tratamento das entradas do formulário
+
+$name = mysqli_real_escape_string($connection, $_POST['name']);
+$email = mysqli_real_escape_string($connection, $_POST['email']);
+$about = mysqli_real_escape_string($connection, $_POST['about']);
+$password = mysqli_real_escape_string($connection, $_POST['password']);
+$password_confirm = mysqli_real_escape_string($connection, $_POST['password_confirm']);
+$actual_image = mysqli_real_escape_string($connection, $_POST['actual_image']);
+
+$query = "UPDATE users SET ";
+
+// Verificar se o campo d0e senha foi preenchido
+
+if($passoword != ''){
+    //Verificar se a senaha e a confirmação são iguais
+    if($password == $password_confirm){
+        // Criptografia a senha
+        $password_hashed = $password_hashed($password, PASSWORD_DEFAULT);
+
+        //Adicionar a senha a query
+        $query .= "password = '$password_heshed'";
+    }
+}
+
+
 // Adiciona os outros campos à query
 $query .= "name = '$name', email = '$email', about = '$about' WHERE id = '$user_id'";
 
